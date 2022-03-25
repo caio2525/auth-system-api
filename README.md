@@ -48,18 +48,35 @@ Para fazer o projeto rodar localmente na sua máquina siga os passos de instala�
 
 4. Configurando duas variáveis de ambiente.
 
-Crie um arquivo .env dentro da pasta raiz do projeto e configure as seguintes variáveis. 
+Crie um arquivo .env dentro da pasta raiz do projeto e configure as seguintes variáveis.
 A primeira é chamada SQLALCHEMY_DATABASE_URI, ela identifica o banco de dados local postgresql no qual sua api se concetará. O formato dela é: dialect+driver://username:password@host:port/database e um exemplo poderia ser: postgresql://scott:tiger@localhost/mydatabase .
 
 A segunda é chamada SECRET_KEY, ela server para assinar os cookies de sessão; qualquer string serve neste caso, mas pode-se gerar uma longa string randomica.
 
+5. Crie as tabelas do banco de dados. Para isso, abra um python shell e rode o comando seguinte.
+   ```sh
+   from app import app
+   from app import db
+   with app.app_context():
+      db.create_all()
+   ```
 
-6. Torne o arquivo run executável
+Pode-se descomentar as linhas no arquivo app.py, rodar o servidor e depois voltar a comentá-las. 
+
+6. Crie a tabela de sessões. Para isso, abra um python shell e rode o comando seguinte.
+   ```sh
+   from app import app
+   from app import sess
+   with app.app_context():
+       sess.app.session_interface.db.create_all()
+   ```
+
+7. Torne o arquivo run executável
    ```sh
    chmod +x run
    ```
 
-6. Inicie o servidor
+8. Inicie o servidor
    ```sh
    ./run
    ```
