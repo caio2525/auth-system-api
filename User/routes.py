@@ -39,22 +39,6 @@ def login():
     userPassword = request.form['userPassword']
     return utilityUser(userEmail = userEmail, userPassword = userPassword).login()
 
-@app.route('/set/<valor>')
-def set(valor):
-    print('valor', valor)
-    session['userId'] = valor
-    response = Response("Hello, %s" % session.get('userId'), status=200)
-    response.headers['Access-Control-Allow-Credentials'] = 'true'
-    return response
-
-@app.route('/obter')
-def obter():
-    print('session', session)
-    print('userId', session.get('userId', 'not set'))
-    response = Response("Hello, %s" % session.get('userId'), status=200)
-    response.headers['Access-Control-Allow-Credentials'] = 'true'
-    return response
-
 @app.route("/logout", methods=["GET"])
 def logout():
     return utilityUser().logout()

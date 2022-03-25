@@ -12,6 +12,7 @@ SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app = Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy()
 db.init_app(app)
@@ -21,16 +22,16 @@ app.config['SESSION_COOKIE_SECURE'] = True
 app.config['SESSION_TYPE'] = 'sqlalchemy'
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SESSION_SQLALCHEMY'] = db
-#app.config['SESSION_SQLALCHEMY_TABLE'] = 'sessions'
-#app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(seconds=30)
+
 
 sess = Session(app)
-#sess.init_app(app)
+
 
 #run it only once
 #with app.app_context():
 #    sess.app.session_interface.db.create_all()
 
+#run it only once
 #with app.app_context():
 #   db.create_all()
 

@@ -186,10 +186,10 @@ class utilityUser():
 
     def addToDo(self, item):
         self.setInfoFromSession()
-        print('self.userEmail', self.userEmail)
-        print('session.get(userName)', session.get('userName'))
-        print('session.get(userEmail)', session.get('userEmail'))
-        print('session.get(userId)', session.get('userId'))
+        #print('self.userEmail', self.userEmail)
+        #print('session.get(userName)', session.get('userName'))
+        #print('session.get(userEmail)', session.get('userEmail'))
+        #print('session.get(userId)', session.get('userId'))
 
         try:
             user = db.session.query(Usuario).filter_by(email=self.userEmail).first()
@@ -233,7 +233,7 @@ class utilityUser():
         try:
             user = db.session.query(Usuario).filter_by(email=self.userEmail).first()
 
-            print('user.todos_as_array', user.todos_as_array())
+            #print('user.todos_as_array', user.todos_as_array())
             if(user):
                 response = make_response(
                     jsonify({
