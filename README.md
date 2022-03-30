@@ -5,9 +5,15 @@ Criação de usuário
 
 A rota /signup espera receber um formulario com nome, email e senha. Com essas informações, a senha é criptografada usando bcrypt e um usuário é criado armazenando as informações de nome e email junto com um hash da senha no banco de dados postgresql.
 
+![Sign](https://i.ibb.co/gdr0YFm/signup.png)
+
+
 Login
 
 A rota /login espera receber um formulario contento email e senha. As informações passadas são conferidas com as informações no banco de dados e caso estejam corretas, uma server side session é criada e um id de sessão é enviado como resposta ao cliente para que este o armazene em forma de cookie. A partir de então, todas requesições vindas do cliente trarão um cookie de id de sessão, o que permitirá a API identificar que aquele cliente já foi authenticado e possui uma sessão ativa.
+
+![Login](https://i.ibb.co/pJmrGYL/login.png)
+
 
 Logout
 
